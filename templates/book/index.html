@@ -1,0 +1,104 @@
+{% extends 'music/base.html' %}
+{% block seller_active %}active{% endblock %}
+
+{% block body %}
+<div class="seller-container container-fluid">
+
+    <!-- Albums -->
+    <div class="col-sm-12">
+                <br>
+                <a href="{% url 'create_seller' %}">
+                    <button type="button" class="btn btn-success">
+                        <span class="glyphicon glyphicon-plus"></span>&nbsp;Add BookSet
+                    </button>
+                </a>
+            </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <h3>  </h3>
+        </div>
+        {% if seller %}
+            {% for seller in seller %}
+                <div class="col-sm-4 col-lg-2">
+                    <div class="thumbnail">
+
+                            <img src="{{ seller.BookSet_Photo.url }}" class="img-responsive">
+                        </a>
+                        <div class="caption">
+                            <h2>{{ seller.Key }}</h2>
+                            <h4>{{ seller.Total_Price }}</h4>
+
+                            <!-- View Details -->
+                            <a href="{% url 'detail1' seller.id %}" class="btn btn-primary btn-sm" role="button">Details</a>
+
+                            <!-- Delete Album -->
+                            <form action="{% url 'delete_seller' seller.id %}" method="post" style="display: inline;">
+                                {% csrf_token %}
+                                <input type="hidden" name="seller_id" value="{{ seller.id }}" />
+                                <button type="submit" class="btn btn-default btn-sm">
+                                    <span class="glyphicon glyphicon-trash"></span>
+                                </button>
+                            </form>
+
+
+
+                            </div>
+                    </div>
+                </div>
+                {% cycle '' '' '' '' '' '<div class="clearfix visible-lg"></div>' %}
+            {% endfor %}
+        {% endif %}
+    </div>
+
+    <!-- If user searches and there are songs -->
+  <!--  {% if songs %}
+        <div class="row">
+            <div class="col-sm-12">
+                <h3>Songs</h3>
+            </div>
+            <div class="col-sm-12">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Branch and Year</th>
+                                    <th>Artist</th>
+                                    <th>Audio File</th>
+                                    <th>Album</th>
+                                    <th>Favorite</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for song in songs %}
+                                    <tr>
+                                        <td>{{ song.song_title }}</td>
+                                        <td>{{ song.album.artist }}</td>
+                                        <td>
+                                            <a target="_blank" href="{{ song.audio_file.url }}">
+                                                <button type="button" class="btn btn-success btn-xs">
+                                                    <span class="glyphicon glyphicon-play"></span>&nbsp; Play
+                                                </button>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href="{% url 'detail' song.album.id %}">
+                                                <img src="{{ song.album.album_logo.url }}" class="img-responsive" style="width: 20px; float: left; margin-right: 10px;" />
+                                            </a>
+                                            <a href="{% url 'detail' song.album.id %}">{{ song.album.album_title }}</a>
+                                        </td>
+                                        <td>
+                                            <a href="{% url 'favorite' song.id %}" class="btn-favorite"><span class="glyphicon glyphicon-star {% if song.is_favorite %}active{% endif %}"></span></a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+</div>      -->
+{% endblock %}

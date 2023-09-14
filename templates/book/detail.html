@@ -1,0 +1,82 @@
+{% extends 'music/base.html' %}
+{% block title %}{% endblock %}
+{% block seller_active %}active{% endblock %}
+
+{% block body %}
+<div class="container-fluid songs-container">
+    <div class="row">
+        <div class="col-sm-12">
+
+                        <table class="table">
+
+                        <td>
+                        {% if seller.BookSet_Photo %}
+                            <img src="{{ seller.BookSet_Photo.url }}" class="img-responsive" style="width: 400px; float: left; margin-right: 200px;"/>
+                        {% else %}
+                            <h3>No image to display</h3>
+                        {% endif %}
+                        </td>
+
+
+
+            <td>
+                <div class="row">
+           <div class="col-sm-12 col-md-6">
+            <div class="panel panel-default">
+
+                        <table class="table">
+
+                                <tr>
+                                    <th>Seller</th>
+                                    <td>{{ seller.user.username }}</td>
+                                </tr>
+
+                                <tr>
+                                    <th>Branch and Semester</th>
+                                    <td>{{ seller.Key }}</td>
+                                </tr>
+
+                                <tr>
+                                    <th>Subjects</th>
+                                    <td>{{ seller.Subjects }}</td>
+                                </tr>
+
+                                <tr>
+                                    <th>Description</th>
+                                    <td>{{ seller.Description }}</td>
+                                </tr>
+
+                                <tr>
+                                    <th>Total Price</th>
+                                    <td>{{ seller.Total_Price }}</td>
+                                </tr>
+
+                                <tr>
+                                    <th>click here to chat with seller</th>
+                                    <td><a href="{% url 'home' seller.id %}" class="btn btn-primary btn-sm" role="button">Chat</a></td>
+                                </tr>
+
+                                <tr>
+                                    <th>Add To WishList</th>
+                                    <td>
+                                    <a href="{% url 'wishlist' seller.id %}" class="btn btn-default btn-sm btn-favorite" role="button">
+                                        <span class="glyphicon glyphicon-star {% if seller.wishlist %}active{% endif %}"></span></a>
+                                    </td>
+                                </tr>
+                        </table>
+                </div>
+            </div>
+        </div>
+
+            </td>
+
+                        </table>
+
+        </div>
+    </div>
+
+
+
+</div>
+
+{% endblock %}

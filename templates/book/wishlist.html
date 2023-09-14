@@ -1,0 +1,51 @@
+{% extends 'music/base.html' %}
+{% block title %}{% endblock %}
+{% block seller_active %}active{% endblock %}
+
+{% block body %}
+<head>
+    <meta charset="UTF-8">
+    <title>WishList</title>
+
+</head>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <h3>WishList</h3>
+            </div>
+            <div class="col-sm-12">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>BookSet</th>
+                                    <th>Seller</th>
+                                    <th>Branch and Semester</th>
+                                    <th>Total price</th>
+                                    <th>Details</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for seller in seller %}
+                                    <tr>
+                                         <td>
+                                                <img src="{{ seller.BookSet_Photo.url }}" class="img-responsive" style="width: 40px; float: left; margin-right: 20px;" />
+                                        </td>
+                                        <td>{{ seller.user.username }}</td>
+                                        <td>{{ seller.Key }}</td>
+                                        <td>{{ seller.Total_Price }}</td>
+                                        <td><a href="{% url 'detail' seller.id %}" class="btn btn-primary btn-sm" role="button">View</a></td>
+
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+{% endblock %}

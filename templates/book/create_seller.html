@@ -1,0 +1,48 @@
+{% extends 'music/base.html' %}
+{% block title %}Add a New Set{% endblock %}
+{% block seller_active %}active{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+
+    <div class="row">
+
+        <div class="col-sm-12 col-md-7">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h3>Add a New BookSet</h3>
+                    {% if error_message %}
+                        <p><strong>{{ error_message }}</strong></p>
+                    {% endif %}
+                    <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {% include 'music/form_template.html' %}
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+
+                                <button type="submit" class="btn btn-success">Submit</button>
+
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-md-5">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h3>How To Select The KEY</h3>
+                    <p>Key is the combination of your branch and semester of which you want to sell the books.</p>
+                    <p>Example : if you want to sell the bookset of COMPUTER branch and 5th semester then you have to enter COMP5 as key.</p>
+                    <h3>Bookset</h3>
+                    <p>You are expected to upload the group photo of books containing all books that you want to sell</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'music/base_visitor.html' %}
+{% block title %}Register{% endblock %}
+{% block register_active %}active{% endblock %}
+
+{% block body %}
+
+
+ <div style="padding:4% 0 0;">
+
+            <div class="panel panel-primary" style="max-width:500px;padding:0% 0 0;margin-left:auto;margin-right:auto;">
+                <div class="panel-body">
+
+                    <h1>Register for an Account</h1>
+                    <h3>   </h3>
+                    {% if error_message %}
+                        <p><strong>{{ error_message }}</strong></p>
+                    {% endif %}
+                    <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data" >
+                        {% csrf_token %}
+                        {% include 'music/form_template.html' %}
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-success">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                    </div>
+                </div>
+                <div class="panel-footer" style="max-width:500px;padding:0.5% 0 0;margin-left:auto;margin-right:auto;">
+                    <h5>.   Already have an account?<a href="{% url 'login_user' %}">Click here</a> to log in.</h5>
+                     <div class="panel-footer" style="max-width:500px;padding:0% 0 0;margin-left:auto;margin-right:auto;">
+                    <h6>      </h6>
+
+                </div>
+                </div>
+            </div>
+</div>
+
+
+
+
+
+
+{% endblock %}
+
